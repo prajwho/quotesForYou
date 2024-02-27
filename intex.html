@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <divnk rel="stylesheet" href="./style.css">
     <title>QuotesForYou</title>
 </head>
 <body>
@@ -13,31 +13,35 @@
             <span class="select-btn-text">Select a Category</span>
         </div>
 
-        <ul class="category-options">
-            <li class="option">
-                <span class="option-text">Inspirational</span>                  
-            </li>
+        <div class="category-options">
+            <div class="option">
+                <span class="option-text">Love</span>                  
+            </div>
             
-            <li class="option">
+            <div class="option">
                 <span class="option-text">Motivational</span>
-            </li>
+            </div>
 
-        </ul>
+        </div>
     </div>
 
     <!-- main body of the quote -->
-    <div class="output">
-        <div class="output-header">
+    <div class="card">
+        <div class="card-header">
           <h3>Quote of the Day</h3>
         </div>
-        <div class="output-body">
+        <div class="card-body">
           <p id="quote">The quote will be displayed here..</p>
         </div>
 
+        <!-- footer with all the functionality -->
+    <div class="card-footer">
+        <button class="quote-btn" id="prev-btn">Previous</button>
+        <button class="quote-btn" id="random-btn">Random</button>
+        <button class="quote-btn" id="next-btn">Next</button>
+    </div>
 
-
-
-
+        
     <script src="./script.js"></script>
 </body>
 </html>

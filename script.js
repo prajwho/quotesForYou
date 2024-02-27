@@ -46,3 +46,49 @@ options.forEach((option) => {
     categoryOptions.classList.toggle("active");
   });
 });
+
+//Lister for click in card-footer instead of separate buttons
+const cardFooter = document.querySelector(".card-footer");
+cardFooter.addEventListener("click", (e) => {
+  const category = select_button_text.innerHTML;
+  const currentQuote = quoteText.innerHTML;
+  const quotes = categories.find((cat) => cat.name === category).quotes;
+  const currentIndex = quotes.indexOf(currentQuote); //Returns -1 when not present so easily handles category change
+  let generatedQuote = "";
+
+  if (e.target.id === "next-btn") {
+    generatedQuote = quotes[getNextIndex(currentIndex, quotes.length)];
+  } else if (e.target.id === "prev-btn") {
+    generatedQuote = quotes[getPrevIndex(currentIndex, quotes.length)];
+  } else if (e.target.id === "random-btn") {
+    generatedQuote = quotes[getRandomIndex(quotes.length)];
+
+    
+    if (generatedQuote === currentQuote) {
+      generatedQuote = getRandomQuote(currentQuote, quotes);
+    }
+  }
+
+  if (generatedQuote) {
+    quoteText.innerHTML = generatedQuote;
+  }
+});
+
+function getPrevIndex(currentIndex, length) {
+  return (currentIndex - 1 + length) % length;
+}
+
+function getNextIndex(currentIndex, length) {
+  return (currentIndex + 1) % length;
+}
+
+function getRandomIndex(length) {
+  return Math.floor(Math.random() * length);
+}
+
+function getRandomQuote(currentQuote, quotesArr) {
+  const quote = quotesArr[getRandomIndex(quotesArr.length)];
+  if (quote === currentQuote) {
+    return quotesArr[getRandomIndex(quotesArr.length)];
+  }
+}
